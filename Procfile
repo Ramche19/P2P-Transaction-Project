@@ -1,1 +1,1 @@
-web: java -jar P2P-Trnsaction-Project.war
+web: java -jar Transaction_Project.war
