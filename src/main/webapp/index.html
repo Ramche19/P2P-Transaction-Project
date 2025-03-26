@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Project FM</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="icon" href="./FASTMONEY logo.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+    <img src="FASTMONEY_logo-removebg-preview.png" height="50" width="50" alt="logo" id="logo">
+    </header>
+    <div class="container">
+
+        <div class="forms">
+            <form  action="login" method="post" onsubmit="formSubmit(event)">
+                <br>
+                <label for="Email">Email</label><br>
+                <input type="email" class="inputbox" name="Email" placeholder="Eg. JohnWick007@gmail.com" id="Email" required><br><br>
+                
+                <label for="Pwd" >Password</label>
+                <div id="passwordWrapper">
+                    <input type="password" name="password" class="inputbox" id="Pwd" required>
+                    <button type="button" onclick="reveal()" class="pwdicon">
+                        <i class="fa-solid fa-eye" id="eye"></i>
+                    </button>
+                    <div class="para">
+                        <p id="errorMsg"></p>
+                    </div>
+                </div>   
+                <div id="login">
+                    <button  class="buttons" type="submit">LOG IN</button><br>
+                </div>
+           
+            </form>
+        </div>
+        <div id="forpwd">
+            <a href="ForgotPassword.jsp?msg=' '">Forgot password?</a>
+        </div>
+
+            
+
+        
+    </div>
+    <div id="signup">
+        <p>Don't Have an Account? <span><a href="SignUp.html"> Sign Up</a></span></p>
+        
+    </div>
+
+   <script>
+	   const password = document.getElementById("Pwd");
+const icon = document.getElementById("eye");
+
+ console.log(password.value)
+
+function reveal() 
+{
+    if (password.type == "password")
+    {
+        password.type = "text";
+        icon.className = "fa-solid fa-eye-slash";
+
+    }
+    else {
+        password.type = "password";
+        icon.className = "fa-solid fa-eye";
+  }
+}
+
+function formSubmit(e)
+{
+    e.preventDefault();
+    const passlength = password.value.length;
+    console.log(passlength);
+    if (passlength < 8) {
+        const errormsg = document.getElementById("errorMsg");
+        errormsg.textContent = "Password should be min. 8 characters"
+        
+    }
+    else {
+        e.target.submit();
+    }
+}
+
+   </script> 
+</body>
+</html>

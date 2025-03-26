@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="ISO-8859-1">
+    <title>SIGN UP</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="icon" href="./FASTMONEY logo.png">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="logo">
+        <img src="./FASTMONEY_logo-removebg-preview.png" height="50" width="50rem" alt="logo" id="logo">
+    </div>
+    <div class="container">
+        <div class="forms">
+            <form method="post" action="signup" id="signupForm"><br>
+                <label for="fname">Full Name</label><br>
+                <input id="fname" name="fname" type="text" class="inputbox" placeholder="Eg. Kishan Basina" required><br><br>
+        
+                <div class="email">
+                    <label for="Email">Email:</label><br>
+                    <input type="email" class="inputbox" name="Email" placeholder="Eg. Kishan@gmail.com" id="Email" required>
+                </div><br>
+                <label for="Pwd">Password:</label><br>
+                <div id="passwordWrapper">
+                    <input type="password" class="inputbox" id="Pwd" name="pwd" required>
+                    <button type="button" class="pwdicon" onclick="togglePassword('Pwd')">
+                        <i class="fa-solid fa-eye" id="eye"></i>
+                    </button>
+                    <div class="para">
+                        <p id="errorMsg"> </p><br>
+                    </div>
+                </div>
+                <label for="pin">Transaction-Pin:</label><br>
+                <div id="pinWrapper">
+                    <input type="password" class="inputbox" id="pin" maxlength="6" placeholder="Enter 6 digit Pin" name="mtpin" required>
+                    <button type="button" class="pwdicon" onclick="togglePassword('pin')">
+                        <i class="fa-solid fa-eye" id="eye1"></i>
+                    </button>
+                    <div class="para">
+                        <p id="errorMsg1"> </p><br>
+                    </div>
+                </div>
+                <div class="phone">
+                    <label for="phone">Phone Number:</label><br>
+                    <input type="number" class="inputbox" name="phone" id="phone" required>
+                </div><br>
+                <div id="login">
+                    <button class="buttons" type="submit">Sign Up</button><br><br><br>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div id="signup">
+        <p>Already have an Account? <span><a href="index.html"> Log In</a></span></p>
+    </div>
+
+    <script>
+        // Toggle Password Visibility
+        function togglePassword(fieldId) {
+            const field = document.getElementById(fieldId);
+            const icon = field.nextElementSibling.querySelector('i');
+            if (field.type === "password") {
+                field.type = "text";
+                icon.classList.remove("fa-eye");
+                icon.classList.add("fa-eye-slash");
+            } else {
+                field.type = "password";
+                icon.classList.remove("fa-eye-slash");
+                icon.classList.add("fa-eye");
+            }
+        }
+
+        // Event listeners for validation
+        document.addEventListener('DOMContentLoaded', () => {
+            const passwordInput = document.getElementById('Pwd');
+            const pinInput = document.getElementById('pin');
+            const passwordError = document.getElementById('errorMsg');
+            const pinError = document.getElementById('errorMsg1');
+            const form = document.getElementById('signupForm');
+
+            // Function to validate password length
+            function validatePassword() {
+                if (passwordInput.value.length < 8) {
+                    passwordError.textContent = 'Password must be at least 8 characters long.';
+                    return false;
+                } else {
+                    passwordError.textContent = '';
+                    return true;
+                }
+            }
+
+            // Function to validate MT-Pin
+            function validatePin() {
+                const pinValue = pinInput.value;
+                if (pinValue.length !== 6 || isNaN(pinValue)) {
+                    pinError.textContent = 'MT-Pin must be a 6-digit number.';
+                    return false;
+                } else {
+                    pinError.textContent = '';
+                    return true;
+                }
+            }
+
+            // Attach input event listeners for real-time validation
+            passwordInput.addEventListener('input', validatePassword);
+            pinInput.addEventListener('input', validatePin);
+
+            // Form submission event handler
+            form.addEventListener('submit', (event) => {
+                const isPasswordValid = validatePassword();
+                const isPinValid = validatePin();
+
+                if (!isPasswordValid || !isPinValid) {
+                    event.preventDefault(); // Prevent form submission if validation fails
+                    return false;
+                }
+            });
+        });
+    </script>
+</body>
+</html>

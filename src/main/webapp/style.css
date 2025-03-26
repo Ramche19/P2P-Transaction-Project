@@ -1,0 +1,254 @@
+@charset "ISO-8859-1";
+
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button
+     {
+	    -webkit-appearance: none;
+	    margin: 0;
+	 }
+
+:root{
+	--bg-color: linear-gradient(145deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 24%, rgba(108,108,108,1) 100%);
+	--container-color: black;
+	--container-shadow: 0 0 7px rgba(253, 254, 253, 0.5), 0 0 15px rgba(247, 248, 247, 0.5), 0 0 30px rgba(248, 248, 248, 0.5);
+    --color0:white;
+    --color1:black;
+	
+}
+
+body{
+    font-family: "Source Code Pro", serif;
+    font-optical-sizing: auto;
+    font-weight: 800;
+    font-style: normal;
+
+    height:100vh;
+    width:100vw;
+
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background: var(--bg-color);
+
+
+}
+header{
+	position:sticky;
+}
+
+.container
+{
+   /*	min-height: 50%; */
+    width:85%;
+    max-width:30rem;
+    
+    margin:1rem;
+    padding:1rem;
+
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap:5rem;
+
+    border-radius: 0.5rem;
+    box-shadow:var(--container-shadow);
+    border:solid 2px var(--color0);
+
+    background-color: var(--container-color);
+    color:var(--color0);
+    
+}
+
+#info{
+	color:var(--color0);
+	background-color: var(--color1);
+	border: solid 2px var(--color0);
+	border-radius: 0.5rem;
+	padding:0.5rem;
+}
+
+.forms{
+	display: flex;
+	gap:10px;
+}
+
+a{
+    font-weight: 200;
+    margin-top:1rem;
+    color:lightgrey;
+}
+a:hover{
+    font-weight: 900;
+    color:var(--color0);
+}
+
+.inputbox{
+    margin:0.5rem 0;
+    width:20rem;
+    max-width:100%;
+    height:2rem;
+    border:none;
+    border-radius:0.5rem;
+    color:black;
+    padding:0.5rem;
+    box-sizing: border-box;
+
+    font-family: "Source Code Pro", serif;
+
+}
+#login{
+    display:flex;
+    justify-content: center;
+    margin-top:1rem;
+    
+}
+
+#passwordWrapper,#pinWrapper {
+  position: relative;
+  width: 100%;
+}
+
+#Pwd,#pin {
+  width: 100%;
+  padding: 10px;
+  padding-right: 2.5rem;
+  font-size: 16px;
+  border-radius:5px;
+}
+
+
+
+.pwdicon {
+  position: absolute;
+  right: 0.5rem;
+  top: 25%;
+  background: none;
+  
+  cursor: pointer;
+  border:none;
+}
+
+
+.buttons{
+    border-radius:4rem;
+    color:var(--color0);
+    background-color:var(--color1);
+    min-width:5rem;
+    height:2rem;
+    
+    border:1px solid var(--color0);
+    box-shadow:2px 3px 0  
+}
+
+.buttons:hover{
+    background-color:var(--color0);
+    color:var(--color1);
+    border:1px solid var(--color0);
+    box-shadow:2px 3px grey;
+    cursor: pointer;
+    
+    
+}
+.buttons:active{
+    box-shadow:0 0 0;
+    transform:translateY(2px);
+    
+    
+}
+
+#signup{
+    color:lightgrey;
+
+}
+
+.para{
+    
+    
+    color:darkgray;
+    font-size:smaller;
+    font-weight: 400;
+    font-size:0.8rem;
+    height:1rem;
+}
+
+#errorMsg,#errorMsg1{
+	color:red;
+	
+}
+header{
+    display:flex;
+    color:white;
+    gap:2rem;
+}
+
+#logo{
+	border-radius:1rem;
+}
+.logo{
+	position:absolute;
+	top: 1rem;
+	left:1rem;
+}
+
+/* 📌 Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        padding: 0.8rem;
+        gap: 1.5rem;
+    }
+
+    .inputbox, #Pwd, #pin {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .buttons {
+        width: 100%;
+        min-width: 4rem;
+    }
+
+    .pwdicon {
+        top: 20%;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .container {
+        width: 100%;
+        margin: 0;
+        padding: 0.5rem;
+    }
+
+    .inputbox, #Pwd, #pin {
+        font-size: 13px;
+        padding: 7px;
+    }
+
+    .buttons {
+        font-size: 12px;
+        height: 2.5rem;
+    }
+
+    .logo {
+        position: relative;
+        top: 0;
+        left: 0;
+    }
+}
