@@ -6,6 +6,6 @@ public interface DBInfo
             + "&reconnectAttempts=5"
             + "&reconnectDelay=3000";
     String user = "neondb_owner";
-    String password = "npg_xcb7vJLaC0yR";
+    String password = "";
 
 }
